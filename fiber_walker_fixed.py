@@ -1,9 +1,3 @@
-#!/usr/bin/env python2
-
-'''
-09 May 2019
-TODO: make simple web app gui for controlling sweeping and fiber walker.
-'''
 from ctypes import *
 from dwfconstants import *
 import time
