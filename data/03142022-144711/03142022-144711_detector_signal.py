@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Nov 18 14:47:43 2021
+
+@author: softdesert
+"""
+
 from __future__ import division
 from __future__ import absolute_import
 from __future__ import print_function
@@ -16,10 +24,10 @@ df = pd.read_csv(file_name+".csv", index_col=0)
 # THESE MUST BE CHANGED FOR NEW ANALOG DISCOVERY SET UP
 # dc# names correspond to connections made on each analog discovery but are sorted here under list transformation
 steps = df.steps.to_list()
-DC_1550 = df.dc1.to_list() 
-DC_1310 = df.dc2.to_list()
-AMPLITUDE = df.dc3.to_list()
-PHASE = df.dc4.to_list()
+DC_1550 = df.dc3.to_list() 
+DC_1310 = df.dc4.to_list()
+AMPLITUDE = df.dc1.to_list()
+PHASE = df.dc2.to_list()
 AC_TO_DC_GAIN = (28000000/20000)**(-1)
 
 peaks = spy.find_peaks_cwt(np.array(DC_1550),0.1)
@@ -29,10 +37,7 @@ print('PEAKS: '+str(peaks))
 print('AVERAGE SEPERATION: '+str(avg))
 print('steps to distance ratio: '+str(steps_to_distance_ratio)+'nm/step')
 
-
-
 SCALE_X_AXIS = [float(i*steps_to_distance_ratio) for i in df.steps.to_list()[:-1]]
-
 
 
 # numerical approach to sensitivity calculation
